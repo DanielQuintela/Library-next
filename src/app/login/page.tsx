@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import { User } from "../types/User";
 import { authUser } from "../services/authUser";
+import { redirect, useRouter } from "next/navigation";
+
+
 
 export default function LoginPage() {
   const initialValue: User = {
@@ -12,6 +15,7 @@ export default function LoginPage() {
     birth: "",
   };
 
+const router = useRouter();
   const [formatData, setFormatData] = useState<User>(initialValue);
   const [errorMsg, setErrorMsg] = useState("");
 
@@ -28,6 +32,8 @@ export default function LoginPage() {
       const user = await authUser(formatData);
       console.log("Login bem-sucedido:", user);
       // redirecionar ou salvar usuário no localStorage aqui
+      await localStorage.setItem("token", user.token);
+      router.push("/books");
     } catch (error: any) {
       if (error.response?.status === 401) {
         setErrorMsg("Email ou senha incorretos.");

@@ -1,13 +1,13 @@
 
 import axios from "axios";
-import { LoginUser, User } from "../types/User";
+import { LoginResponse, LoginUser, User } from "../types/User";
 
 
 const API = "http://localhost:8080/users/login";
 
-export const authUser = async (formData: Partial<User>): Promise<User> => {
+export const authUser = async (formData: Partial<User>): Promise<LoginResponse> => {
     try {
-        const response = await axios.post<User>(API, formData, {
+        const response = await axios.post<LoginResponse>(API, formData, {
             headers: {
                 "Content-Type": "application/json",
             },
