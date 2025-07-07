@@ -51,8 +51,6 @@ export default function Navbar() {
                 Livros
               </Link>
 
-         
-              <NavMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
 
               <button
                 onClick={handleLogout}
@@ -60,6 +58,8 @@ export default function Navbar() {
               >
                 Logout
               </button>
+
+               <NavMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
             </>
           ) : (
             <Link

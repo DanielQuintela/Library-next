@@ -1,5 +1,5 @@
 import { Menu } from "lucide-react";
-import router from "next/router";
+import { useRouter } from "next/navigation";
 
 
 type NavMenuProps = {
@@ -8,13 +8,15 @@ type NavMenuProps = {
 };
 
 export default function NavMenu({ menuOpen, setMenuOpen }: NavMenuProps) {
+
+     const router = useRouter();
     return (
         <div className="relative">
                 <button
                   onClick={() => setMenuOpen(!menuOpen)}
                   className="p-2 rounded-md hover:bg-zinc-200 dark:hover:bg-zinc-800 transition"
                 >
-                  <Menu className="w-6 h-6 text-zinc-800 dark:text-white" />
+                  <Menu className="w-6 h-6  text-zinc-800 dark:text-white" />
                 </button>
 
                 {menuOpen && (
@@ -23,7 +25,7 @@ export default function NavMenu({ menuOpen, setMenuOpen }: NavMenuProps) {
                       <li>
                         <button
                           onClick={() => {
-                            router.push("/rent/create");
+                            router.push("/rent/newRent");
                             setMenuOpen(false);
                           }}
                           className="w-full text-left px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-700"
@@ -34,7 +36,7 @@ export default function NavMenu({ menuOpen, setMenuOpen }: NavMenuProps) {
                       <li>
                         <button
                           onClick={() => {
-                            router.push("/rent/view");
+                            router.push("/rent/listRent");
                             setMenuOpen(false);
                           }}
                           className="w-full text-left px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-700"
@@ -45,7 +47,7 @@ export default function NavMenu({ menuOpen, setMenuOpen }: NavMenuProps) {
                       <li>
                         <button
                           onClick={() => {
-                            router.push("/rent/update");
+                            router.push("/rent/updateRent");
                             setMenuOpen(false);
                           }}
                           className="w-full text-left px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-700"
