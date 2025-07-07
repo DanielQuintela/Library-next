@@ -45,9 +45,8 @@ export default function Navbar() {
                   href="/books"
                   className={
                     (path === "/books"
-                      ? "font-semibold text-blue-600 "
-                      : "text-zinc-700 dark:text-zinc-200 ") +
-                    "transition-colors px-5 py-2 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-700 dark:hover:text-white hover:border hover:border-blue-600 hover:text-blue-800"
+                      ? "font-semibold text-blue-600 px-5 py-2  "
+                      : "text-zinc-700 dark:text-zinc-200 transition-colors px-5 py-2 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-700 dark:hover:text-white  hover:text-blue-800 font-semibold ") 
                   }
                 >
                   Livros
@@ -62,7 +61,7 @@ export default function Navbar() {
             ) : (
               <Link
                 href="/login"
-                className={path === "/login" ? "font-semibold text-blue-600" : ""}
+                className={path === "/login" ? "font-semibold text-blue-600 " : "transition-colors px-5 py-2 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-700 dark:hover:text-black hover:text-blue-800 font-semibold"}
               >
                 Login
               </Link>
