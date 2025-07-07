@@ -47,11 +47,11 @@ export default function NewRent() {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="flex justify-center items-center min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4"
+      className="flex items-center justify-center min-h-screen rounded-2xl bg-zinc-100 dark:bg-zinc-900 px-4"
     >
       <form
         onSubmit={handleNewRent}
-        className="bg-white shadow-xl rounded-2xl p-6 w-full max-w-md space-y-5 border border-gray-200"
+        className="bg-white  dark:bg-zinc-100 dark:text-black shadow-xl rounded-2xl p-6 w-full max-w-md space-y-5 border border-gray-200"
       >
         <h2 className="text-2xl font-bold text-center text-gray-800">Novo Aluguel</h2>
 

@@ -45,7 +45,7 @@ const router = useRouter();
 
 
  return (
-    <div className="flex items-center justify-center min-h-screen bg-zinc-100 dark:bg-zinc-900 px-4">
+    <div className="flex items-center justify-center min-h-screen rounded-2xl bg-zinc-100 dark:bg-zinc-900 px-4">
       <div className="bg-white dark:bg-zinc-100 dark:text-black rounded-2xl shadow-xl p-8 max-w-md w-full">
 
         <form className="space-y-4" onSubmit={handleLogin}>
