@@ -1,6 +1,6 @@
 
 import axios from "axios";
-import { LoginResponse, LoginUser, User } from "../types/User";
+import { LoginResponse, User } from "../types/User";
 
 
 const API = "http://localhost:8080/users/login";

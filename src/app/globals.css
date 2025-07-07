@@ -27,3 +27,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px rgb(231, 231, 231) inset !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
