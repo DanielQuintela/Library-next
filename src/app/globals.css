@@ -14,6 +14,7 @@
 
 /* Custei a descobrir, mas isso abaixo faz o tailwind mudar de tema */
 @custom-variant dark (&:where(.dark, .dark *));
+
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
