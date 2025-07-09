@@ -7,7 +7,8 @@ import { User } from "@/app/types/User";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { getUserEmailFromToken } from "@/app/hooks/getTokenInfo";
+import { getUserEmailFromToken, getUserIdFromToken } from "@/app/hooks/getTokenInfo";
+import { toast } from "react-toastify";
 
 
 export default function NewRent() {
@@ -18,6 +19,7 @@ export default function NewRent() {
     book: { id: 0 },
     user: { id: 0 },
     returnDate: new Date(),
+    owner_user: {id: 0}
   });
 
   const [users, setUsers] = useState<User[]>([]);
@@ -33,23 +35,31 @@ export default function NewRent() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-    const response = await getAllUsers();
-    const loggedUserId = getUserEmailFromToken();
+      try {
+        const response = await getAllUsers();
+        const loggedUserEmail = getUserEmailFromToken();
+        const loggedUserId = getUserIdFromToken()
 
-    const filteredUsers = loggedUserId
-      ? response.filter((user) => user.email !== loggedUserId)
-      : response;
+        setForm((prevForm) => ({
+          ...prevForm,
+          owner_user: { id: loggedUserId ?? 0 },
+        }))
+        const filteredUsers = loggedUserEmail
+          ? response.filter((user) => user.email !== loggedUserEmail)
+          : response;
 
-    setUsers(filteredUsers);
+        setUsers(filteredUsers);
 
-    if (filteredUsers.length > 0) {
-      setForm((prevForm) => ({
-        ...prevForm,
-        user: { id: filteredUsers[0].id },
-        }));
+        if (filteredUsers.length > 0) {
+          setForm((prevForm) => ({
+            ...prevForm,
+            user: { id: filteredUsers[0].id },
+          }));
+        }
+      } catch (error: any) {
+        toast.error(error.response?.data.error)
       }
     };
-
     fetchUsers();
   }, []);
 
@@ -60,6 +70,7 @@ export default function NewRent() {
       book: form.book,
       user: form.user,
       returnDate: new Date(form.returnDate!).toISOString(),
+      owner_user: form.owner_user,
     };
 
     try {

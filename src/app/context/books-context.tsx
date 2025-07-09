@@ -21,10 +21,9 @@ export function BooksProvider({ children }: { children: React.ReactNode }) {
       const data = await getLivros();
       setLivros(data);
     } catch(error: any) {
-      toast.error(error.response?.status)
+      toast.error(error.response?.data.error)
+      return
     }
-    const data = await getLivros();
-    setLivros(data);
     setIsLoading(false);
   };
 

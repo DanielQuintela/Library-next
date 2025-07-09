@@ -10,6 +10,7 @@ export const PostNewRent = async (formData: {
   book: { id: number };
   user: { id: number };
   returnDate: string;
+  owner_user: {id: number | null};
 }): Promise<Rent> => {
   return axios
     .post<Rent>(API, formData, {
