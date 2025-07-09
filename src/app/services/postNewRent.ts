@@ -1,6 +1,5 @@
 
 import axios from "axios";
-import { Book } from "../types/Book";
 import { Rent } from "../types/Rent";
 
 

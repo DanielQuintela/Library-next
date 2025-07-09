@@ -3,6 +3,7 @@ import { getUserIdFromToken } from "@/app/hooks/getTokenInfo";
 import { getRentByOwner } from "@/app/services/getRent";
 import { Rent } from "@/app/types/Rent";
 import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 
 export default function ListRent() {
@@ -11,14 +12,21 @@ export default function ListRent() {
 
     useEffect(() => {
         const fetchRents = async () => {
-            const rents = await getRentByOwner(getUserIdFromToken())
-            setRents(rents)
+            try {
+                const rents = await getRentByOwner(getUserIdFromToken())
+                setRents(rents)
+            } catch (error: any) {
+                toast.error(error.response?.data.error)
+            }
+            
         };        
 
         fetchRents();        
     },[])
+    
     return(
         <>
+        
         </>
     );
 }
