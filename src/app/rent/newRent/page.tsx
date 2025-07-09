@@ -2,9 +2,13 @@
 
 import { useBooks } from "@/app/context/books-context";
 import { PostNewRent } from "@/app/services/postNewRent";
+import { getAllUsers } from "@/app/services/getAllUsers";
+import { User } from "@/app/types/User";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { getUserEmailFromToken } from "@/app/hooks/getTokenInfo";
+
 
 export default function NewRent() {
   const { livros } = useBooks();
@@ -16,6 +20,8 @@ export default function NewRent() {
     returnDate: new Date(),
   });
 
+  const [users, setUsers] = useState<User[]>([]);
+
   useEffect(() => {
     if (livros.length > 0) {
       setForm((prevForm) => ({
@@ -24,6 +30,28 @@ export default function NewRent() {
       }));
     }
   }, [livros]);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+    const response = await getAllUsers();
+    const loggedUserId = getUserEmailFromToken();
+
+    const filteredUsers = loggedUserId
+      ? response.filter((user) => user.email !== loggedUserId)
+      : response;
+
+    setUsers(filteredUsers);
+
+    if (filteredUsers.length > 0) {
+      setForm((prevForm) => ({
+        ...prevForm,
+        user: { id: filteredUsers[0].id },
+        }));
+      }
+    };
+
+    fetchUsers();
+  }, []);
 
   const handleNewRent = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -51,10 +79,11 @@ export default function NewRent() {
     >
       <form
         onSubmit={handleNewRent}
-        className="bg-white  dark:bg-zinc-100 dark:text-black shadow-xl rounded-2xl p-6 w-full max-w-md space-y-5 border border-gray-200"
+        className="bg-white dark:bg-zinc-100 dark:text-black shadow-xl rounded-2xl p-6 w-full max-w-md space-y-5 border border-gray-200"
       >
         <h2 className="text-2xl font-bold text-center text-gray-800">Novo Aluguel</h2>
 
+        {/* Livro */}
         <div>
           <label htmlFor="book" className="block mb-1 font-semibold text-gray-700">
             Livro
@@ -76,22 +105,29 @@ export default function NewRent() {
           </select>
         </div>
 
-        {/* TODO: BUSCAR NOME DO USUÁRIO E NÃO ID. RETORNAR O ID DO NOME DO USUÁRIO. */}
+        {/* Usuário */}
         <div>
           <label htmlFor="user" className="block mb-1 font-semibold text-gray-700">
-            ID do Usuário
+            Nome do Usuário
           </label>
-          <input
-            type="number"
+          <select
+            id="user"
             name="user"
-            placeholder="ID do usuário"
             className="border border-gray-300 rounded-lg p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+            value={form.user.id}
             onChange={(e) =>
               setForm({ ...form, user: { id: parseInt(e.target.value) } })
             }
-          />
+          >
+            {users.map((user) => (
+              <option key={user.id} value={user.id}>
+                {user.name}
+              </option>
+            ))}
+          </select>
         </div>
 
+        {/* Data de Devolução */}
         <div>
           <label htmlFor="returnDate" className="block mb-1 font-semibold text-gray-700">
             Data de Devolução

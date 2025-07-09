@@ -15,7 +15,7 @@ export default function LoginPage() {
     birth: "",
   };
 
-const router = useRouter();
+  const router = useRouter();
   const [formatData, setFormatData] = useState<User>(initialValue);
   const [errorMsg, setErrorMsg] = useState("");
 

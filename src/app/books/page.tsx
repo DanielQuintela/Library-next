@@ -10,7 +10,7 @@ export default function LivrosPage() {
    const { livros, isLoading } = useBooks();
 
   if (isLoading) {
-    return <p className="text-center text-gray-600 dark:text-gray-300">Carregando livros...</p>;
+    return <p className="text-center text-2xl font-bold text-gray-600 dark:text-gray-300">Carregando livros...</p>;
   }
 
   return (

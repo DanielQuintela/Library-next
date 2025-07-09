@@ -6,4 +6,5 @@ export type Rent = {
   book: Book;
   user: User;
   returnDate: Date;
+  owner_user: User;
 };
