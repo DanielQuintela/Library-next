@@ -32,9 +32,9 @@ export default function Navbar() {
 
         <Link
           href={isLoggedIn ? "/books" : "/"}
-          className="text-xl font-bold text-blue-600"
+          className="text-xl font-bold text-blue-500 dark:text-blue-400"
         >
-          📚 Livraria
+          {isLoggedIn ? "📖 Livraria ": "📕 Livraria"}
         </Link>
 
         <div className="flex items-center gap-4 relative">

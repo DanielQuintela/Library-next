@@ -55,19 +55,19 @@ export default function ListRent() {
         transition={{ duration: 0.5 }}
         className="overflow-x-auto rounded-lg shadow-md"
       >
-        <table className="min-w-full bg-white dark:bg-zinc-100 border  border-gray-200 dark:border-zinc-400">
+        <table className="min-w-full bg-white dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700">
           <thead>
-            <tr className="bg-zinc-200 text-zinc-800 dark:bg-zinc-400">
-              <th className="py-3 px-4 border-b">Usuário</th>
-              <th className="py-3 px-4 border-b">Livro</th>
-              <th className="py-3 px-4 border-b">Data de Devolução</th>
-              <th className="py-3 px-4 border-b">Ações</th>
+            <tr className="bg-zinc-200 text-zinc-800 dark:bg-zinc-700 dark:text-zinc-100">
+              <th className="py-3 px-4 border-b border-x border-gray-200 dark:border-zinc-700">Usuário</th>
+              <th className="py-3 px-4 border-b border-x border-gray-200 dark:border-zinc-700">Livro</th>
+              <th className="py-3 px-4 border-b border-x border-gray-200 dark:border-zinc-700">Data de Devolução</th>
+              <th className="py-3 px-4 border-b border-x border-gray-200 dark:border-zinc-700">Ações</th>
             </tr>
           </thead>
           <tbody>
             {rents.length === 0 ? (
               <tr>
-                <td colSpan={4} className="text-center py-6 text-zinc-500">
+                <td colSpan={4} className="text-center py-6 text-zinc-500 dark:text-zinc-300">
                   Nenhum aluguel encontrado.
                 </td>
               </tr>
@@ -79,26 +79,28 @@ export default function ListRent() {
                   initial="hidden"
                   animate="visible"
                   variants={rowVariants}
-                  className="hover:bg-zinc-50 text-center dark:text-black"
+                  className="hover:bg-zinc-50 dark:hover:bg-zinc-700 text-center dark:text-zinc-100"
                 >
-                  <td className="py-3 px-6 border-b">
+                  <td className="py-3 px-6 border-b border-x border-gray-200 dark:border-zinc-700"
+ >
                     {rent.user?.name || "Desconhecido"}
                   </td>
-                  <td className="py-2 px-4 border-b">
+                  <td className="py-3 px-6 border-b border-x border-gray-200 dark:border-zinc-700"
+ >
                     {rent.book?.title || "Livro não disponível"}
                   </td>
-                  <td className="py-2 px-14 border-b">
+                  <td className="py-3 px-6 border-b border-x border-gray-200 dark:border-zinc-700"
+ >
                     {new Date(rent.returnDate).toLocaleDateString("pt-BR")}
                   </td>
-                 <td className="py-2 px-4 border-b text-center">
-                  <Link href={`/rent/updateRent/${rent.id}`}>
-                    <button className="flex items-center gap-2 bg-blue-600 text-white px-3 py-1.5 rounded-md hover:bg-blue-700 transition-colors mx-auto">
-                      <Pencil size={16} />
-                      <span className="hidden sm:inline">Editar</span>
-                    </button>
-                  </Link>
-                </td>
-
+                  <td className="py-3 px-6 border-b border-x border-gray-200 dark:border-zinc-700">
+                    <Link href={`/rent/updateRent/${rent.id}`}>
+                      <button className="flex items-center gap-2 bg-blue-400 text-white px-3 py-1.5 rounded-md hover:bg-blue-500 transition-colors mx-auto">
+                        <Pencil size={14} />
+                        <span className="hidden sm:inline">Editar</span>
+                      </button>
+                    </Link>
+                  </td>
                 </motion.tr>
               ))
             )}
