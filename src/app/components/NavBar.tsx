@@ -45,7 +45,7 @@ export default function Navbar() {
                 className={
                   path === "/books"
                     ? "font-semibold text-blue-600 px-5 py-2"
-                    : "text-zinc-700 dark:text-zinc-200 transition-colors px-5 py-2 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-700 dark:hover:text-white hover:text-blue-800 font-semibold"
+                    : "text-zinc-700 dark:text-zinc-200 transition-colors px-5 py-2 rounded-2xl hover:bg-blue-50 dark:hover:bg-blue-500 dark:hover:text-white hover:text-blue-800 font-semibold"
                 }
               >
                 Livros
