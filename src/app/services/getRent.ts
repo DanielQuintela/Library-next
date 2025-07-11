@@ -3,6 +3,7 @@ import { Rent } from "../types/Rent";
 import { toast } from "react-toastify";
 
 const API = "http://localhost:8080/rent/owner";
+const API2 = "http://localhost:8080/rent";
 
 export const getRentByOwner = async (id: number| null): Promise<Rent[]> => {
 
@@ -15,4 +16,9 @@ export const getRentByOwner = async (id: number| null): Promise<Rent[]> => {
         return [];
     }
   
+};
+
+export const getRentById = async (id: number): Promise<Rent> => {
+  const res = await axios.get(`${API2}/${id}`);
+  return res.data;
 };

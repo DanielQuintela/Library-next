@@ -75,7 +75,8 @@ export default function NewRent() {
 
     try {
       await PostNewRent(payload);
-      router.push("/rent/listRent");
+      // router.push("/rent/listRent");
+      toast.success("Aluguel criado com sucesso!")
     } catch (error) {
       console.error("Erro ao criar aluguel:", error);
     }

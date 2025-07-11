@@ -47,12 +47,23 @@ export default function NavMenu({ menuOpen, setMenuOpen }: NavMenuProps) {
                       <li>
                         <button
                           onClick={() => {
-                            router.push("/rent/updateRent");
+                            router.push("/soon");
                             setMenuOpen(false);
                           }}
                           className="w-full text-left px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-700"
                         >
-                          ✏️ Atualizar aluguel
+                          📕 Cadastrar Livro
+                        </button>
+                      </li>
+                      <li>
+                        <button
+                          onClick={() => {
+                            router.push("/soon");
+                            setMenuOpen(false);
+                          }}
+                          className="w-full text-left px-4 py-2 hover:bg-zinc-100 dark:hover:bg-zinc-700"
+                        >
+                          ✏️ Editar Livro
                         </button>
                       </li>
                     </ul>
