@@ -7,3 +7,9 @@ export interface Book {
     release  : Date;
     genre    : string;
 }
+
+export type LivrosContextType = {
+  livros: Book[];
+  isLoading: boolean;
+  refreshLivros: () => Promise<void>;
+};

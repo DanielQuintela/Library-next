@@ -5,34 +5,34 @@ import Link from "next/link";
 import { registerUser } from "../services/registerUser";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
   const [form, setForm] = useState({ name: "", email: "", password: "", birth: "" });
+   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    try {
-        await registerUser(form)
-        console.log("Formulário enviado:", form);
-        toast.success("Usuário criado!")
-        redirect("/login");
-    } catch (error: any) {
-        if (error.response?.status === 400) {
-            toast.error(error.response?.data.error)
-        } else {
-        toast.error(error.response?.data.error);
-      }
-    }
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        try {
+            await registerUser(form)
+            console.log("Formulário enviado:", form);
+            toast.success("Usuário criado!")
+            router.push("/login");
+        } catch (error: any) {
+            if (error.response?.status === 400) {
+                toast.error(error.response?.data.error)
+            } else {
+                toast.error(error.response?.data.error);
+            }
+        }
     }
 
    return (
-    <div className="flex items-center justify-center min-h-screen bg-zinc-100 dark:bg-zinc-900 px-4">
+    <div className="flex items-center justify-center min-h-screen rounded-2xl bg-zinc-100 dark:bg-zinc-900 px-4">
       <div className="bg-white dark:bg-zinc-100 dark:text-black rounded-2xl shadow-xl p-8 max-w-md w-full">
         <motion.h2
           className="text-2xl font-bold text-center mb-6"
