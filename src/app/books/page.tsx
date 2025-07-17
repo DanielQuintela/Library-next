@@ -17,7 +17,7 @@ export default function LivrosPage() {
     <section>
       <h1 className="text-2xl font-bold mb-6">Livros Disponíveis</h1>
       {livros.length === 0 ? (
-         <p className="text-gray-700 text-lg text-center">Não há livros cadastrados.</p>
+         <p className="text-gray-700 text-lg text-center dark:text-gray-200">Não há livros cadastrados.</p>
       ) : ( 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {livros.map((livro) => (
