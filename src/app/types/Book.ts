@@ -4,7 +4,7 @@ export interface Book {
     title    : string;
     author   : string;
     isbn     : string;
-    release  : Date;
+    release  : string;
     genre    : string;
 }
 
