@@ -21,14 +21,14 @@ export default function SoonPage() {
       </div>
 
       <h1 className="text-3xl font-bold mb-2 text-zinc-800 dark:text-zinc-100">Em construção 🚧</h1>
-      <p className="text-lg text-zinc-700 dark:text-zinc-300 text-center">
+      <p className="text-lg text-zinc-700 dark:text-zinc-200 text-center">
         Esta página estará disponível em breve.<br />
       </p>
-    <div className="text-lg text-zinc-700 mb-2 ">
+    <div className="text-lg text-zinc-700 mb-2 dark:text-zinc-300 ">
          <Typewriter
         words={[
         "Aguarde novidades!",
-        "Logo logo estará disponível"
+        "Logo estará disponível"
         ]}
         loop={true}
         cursor

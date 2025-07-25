@@ -19,9 +19,9 @@ export default function LivrosPage() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-zinc-100 dark:bg-zinc-900 rounded-2xl">
+    <div className="flex items-center justify-center pt-2 bg-zinc-100 dark:bg-zinc-900 rounded-2xl">
       <div className="bg-white dark:bg-zinc-800 rounded-2xl shadow-xl p-8 max-w-6xl w-full">
-        <h1 className="text-3xl font-bold mb-6 text-center text-zinc-800 dark:text-zinc-100">
+        <h1 className="text-3xl font-bold mb-6 text-center pt-4  text-zinc-800 dark:text-zinc-100">
           Livros Disponíveis
         </h1>
         {livros.length === 0 ? (
